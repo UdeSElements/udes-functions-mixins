@@ -1,0 +1,70 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<script>
+  /**
+   * @namespace UdeS
+   */
+  window.UdeS = window.UdeS || {};
+
+  /**
+   * UdeS relational operators mixin.
+   * @memberOf UdeS
+   * @mixinFunction
+   * @polymer
+   * @param {Class} superClass The super class.
+   * @return {Class} Class.
+   */
+  UdeS.RelationalOperatorsMixin = (superClass) =>
+      class extends superClass {
+        /**
+         * Return true if the first argument is greater than the second
+         * argument.
+         * @public
+         * @param {Number} a First argument.
+         * @param {Number} b Second argument.
+         * @return {Boolean} True if the first argument is greater than the
+         *                   second argument.
+         */
+        greaterThan(a, b) {
+          return a > b;
+        }
+
+        /**
+         * Return true if the first argument is greater than or equal to the
+         * second argument.
+         * @public
+         * @param {Number} a First argument.
+         * @param {Number} b Second argument.
+         * @return {Boolean} True if the first argument is greater than or equal
+         *                   to the second argument.
+         */
+        greaterThanOrEqualTo(a, b) {
+          return a >= b;
+        }
+
+        /**
+         * Return true if the first argument is less than the second argument.
+         * @public
+         * @param {Number} a First argument.
+         * @param {Number} b Second argument.
+         * @return {Boolean} True if the first argument is less than the second
+         *                   argument.
+         */
+        lessThan(a, b) {
+          return a < b;
+        }
+
+        /**
+         * Return true if the first argument is less than or equal to the second
+         * argument.
+         * @public
+         * @param {Number} a First argument.
+         * @param {Number} b Second argument.
+         * @return {Boolean} True if the first argument is less than or equal to
+         *                   the second argument.
+         */
+        lessThanOrEqualTo(a, b) {
+          return a <= b;
+        }
+      };
+</script>

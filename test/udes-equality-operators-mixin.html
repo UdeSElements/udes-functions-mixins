@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>udes-equality-operators-mixin test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="udes-functions-mixins-test-element.html">
+</head>
+<body>
+<test-fixture id="basic">
+  <template>
+    <udes-functions-mixins-test-element></udes-functions-mixins-test-element>
+  </template>
+</test-fixture>
+<script>
+  suite('<udes-equality-operators-mixin>', () => {
+    let elementMixin;
+
+  setup(() => {
+      elementMixin = fixture('basic');
+  });
+
+  suite('equal', () => {
+      test('should return true for two undefined values', () => {
+        const foo = undefined;
+        const actualResult = elementMixin.equal(foo, undefined);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return true for two identical functions', () => {
+        const sym = Symbol();
+        const actualResult = elementMixin.equal(sym, sym);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return false for two different numbers', () => {
+        const actualResult = elementMixin.equal(1, 2);
+        assert.isFalse(actualResult);
+      });
+
+      test('should return true for two same numbers of different types',
+        () => {
+          const actualResult = elementMixin.equal('1', 1);
+          assert.isTrue(actualResult);
+        });
+  });
+
+  suite('notEqual', () => {
+      test('should return false for two undefined values', () => {
+        const foo = undefined;
+        const actualResult = elementMixin.notEqual(foo, undefined);
+        assert.isFalse(actualResult);
+      });
+
+      test('should return false for two identical functions', () => {
+        const sym = Symbol();
+        const actualResult = elementMixin.notEqual(sym, sym);
+        assert.isFalse(actualResult);
+      });
+
+      test('should return true for two different numbers', () => {
+        const actualResult = elementMixin.notEqual(1, 2);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return false for two same numbers of different types',
+        () => {
+          const actualResult = elementMixin.notEqual('1', 1);
+          assert.isFalse(actualResult);
+        });
+  });
+
+  suite('strictEqual', () => {
+      test('should return true for two undefined values', () => {
+        const foo = undefined;
+        const actualResult = elementMixin.strictEqual(foo, undefined);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return true for two identical functions', () => {
+        const sym = Symbol();
+        const actualResult = elementMixin.strictEqual(sym, sym);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return false for two different numbers', () => {
+        const actualResult = elementMixin.strictEqual(1, 2);
+        assert.isFalse(actualResult);
+      });
+
+      test('should return false for two same numbers of different types',
+        () => {
+          const actualResult = elementMixin.strictEqual('1', 1);
+          assert.isFalse(actualResult);
+        });
+  });
+
+  suite('notStrictEqual', () => {
+      test('should return false for two undefined values', () => {
+        const foo = undefined;
+        const actualResult = elementMixin.notStrictEqual(foo, undefined);
+        assert.isFalse(actualResult);
+      });
+
+      test('should return false for two identical functions', () => {
+        const sym = Symbol();
+        const actualResult = elementMixin.notStrictEqual(sym, sym);
+        assert.isFalse(actualResult);
+      });
+
+      test('should return true for two different numbers', () => {
+        const actualResult = elementMixin.notStrictEqual(1, 2);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return true for two same numbers of different types',
+        () => {
+          const actualResult = elementMixin.notStrictEqual('1', 1);
+          assert.isTrue(actualResult);
+        });
+  });
+});
+</script>
+</body>
+</html>

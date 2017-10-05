@@ -1,0 +1,44 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<script>
+  /**
+   * @namespace UdeS
+   */
+  window.UdeS = window.UdeS || {};
+
+  /**
+   * UdeS array functions mixin.
+   * @memberOf UdeS
+   * @mixinFunction
+   * @polymer
+   * @param {Class} superClass The super class.
+   * @return {Class} Class.
+   */
+  UdeS.ArrayFunctionsMixin = (superClass) =>
+      class extends superClass {
+        /**
+         * Return an array of arguments.
+         * @public
+         * @param {...(*)} args Future arguments of the array.
+         * @return {Array} Array of arguments.
+         */
+        array(...args) {
+          return args;
+        }
+
+        /**
+         * Return the element of array at the specified index.
+         * @public
+         * @param {Array} array Array.
+         * @param {Number} index Index.
+         * @return {*} Element of the array.
+         */
+        at(array, index) {
+          if (index < array.length) {
+            return array[index];
+          }
+
+          return undefined;
+        }
+      };
+</script>

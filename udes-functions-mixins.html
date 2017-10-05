@@ -1,0 +1,26 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="udes-array-functions-mixin.html">
+<link rel="import" href="udes-comparison-operators-mixins.html">
+<link rel="import" href="udes-is-functions-mixin.html">
+
+<script>
+  /**
+   * @namespace UdeS
+   */
+  window.UdeS = window.UdeS || {};
+
+/**
+ * UdeS functions mixins.
+ * @memberOf UdeS
+ * @mixinFunction
+ * @polymer
+ * @appliesMixin UdeS.ArrayFunctionsMixin
+ * @appliesMixin UdeS.ComparisonOperatorsMixins
+ * @appliesMixin UdeS.IsFunctionsMixin
+ * @param {Class} superClass The super class.
+ * @return {Class} Class.
+ */
+UdeS.FunctionsMixins = (superClass) =>
+    class extends UdeS.ArrayFunctionsMixin(
+      UdeS.ComparisonOperatorsMixins(UdeS.IsFunctionsMixin(superClass))) {};
+</script>

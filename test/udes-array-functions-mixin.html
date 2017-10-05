@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>udes-array-functions-mixin test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="udes-functions-mixins-test-element.html">
+</head>
+<body>
+<test-fixture id="basic">
+  <template>
+    <udes-functions-mixins-test-element></udes-functions-mixins-test-element>
+  </template>
+</test-fixture>
+<script>
+  suite('<udes-array-functions-mixin>', () => {
+    let elementMixin;
+
+    setup(() => {
+      elementMixin = fixture('basic');
+    });
+
+    suite('array', () => {
+      test('should return an array', () => {
+        const result = elementMixin.array();
+        assert.isArray(result);
+      });
+
+      test('should return an empty array', () => {
+        const result = elementMixin.array();
+        assert.isArray(result);
+        assert.lengthOf(result, 0);
+      });
+
+      test('should return an array that contains the specified element', () => {
+        const result = elementMixin.array('test');
+        assert.isArray(result);
+        assert.lengthOf(result, 1);
+      });
+
+      test('should return an array that contains the specified elements',
+          () => {
+            const array = ['test', 1, 2, 'four'];
+            const results = elementMixin.array(...array);
+            assert.isArray(results);
+            assert.lengthOf(results, 4);
+
+            array.forEach((result, index) => {
+              assert.equal(results[index], result);
+            });
+          });
+    });
+
+    suite('at', () => {
+      test('should return undefined if we are out-of-bound', () => {
+        const array = [0, 1, 2];
+        const result = elementMixin.at(array, 3);
+        assert.isUndefined(result);
+      });
+
+      test('should return the specified element', () => {
+        const array = [0, 'String', 2];
+        const results = array.map(
+            (element, index) => elementMixin.at(array, index)
+        );
+
+        results.forEach((result, index) => {
+          assert.equal(result, array[index]);
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

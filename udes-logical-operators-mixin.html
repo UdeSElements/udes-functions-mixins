@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<script>
+  /**
+   * @namespace UdeS
+   */
+  window.UdeS = window.UdeS || {};
+
+  /**
+   * UdeS logical operators mixin.
+   * @memberOf UdeS
+   * @mixinFunction
+   * @polymer
+   * @param {Class} superClass The super class.
+   * @return {Class} Class.
+   */
+  UdeS.LogicalOperatorsMixin = (superClass) =>
+      class extends superClass {
+        /**
+         * And function (&&).
+         * @public
+         * @param {...Boolean} values Boolean values for the "and" function.
+         * @return {Boolean} The result of the "and" function.
+         */
+        and(...values) {
+          return values.reduce((a, b) => a && b, true);
+        }
+
+        /**
+         * If function.
+         * @public
+         * @param {Boolean} booleanExpression Boolean expression.
+         * @param {Number|String} trueValue The returned value if the boolean
+         *                        expression is true.
+         * @param {Number|String} falseValue The returned value if the boolean
+         *                        expression is false.
+         * @return {Number|String} The result of the "if" function.
+         */
+        iif(booleanExpression, trueValue, falseValue) {
+          return booleanExpression ? trueValue : falseValue;
+        }
+
+        /**
+         * Not function (!).
+         * @public
+         * @param {Boolean} booleanExpression Boolean expression.
+         * @return {Boolean} The result of the "not" function.
+         */
+        not(booleanExpression) {
+          return !booleanExpression;
+        }
+
+        /**
+         * Or function (||).
+         * @public
+         * @param {...Boolean} values Boolean values for the "or" function.
+         * @return {Boolean} The result of the "or" function.
+         */
+        or(...values) {
+          return values.reduce((a, b) => a || b, false);
+        }
+
+        /**
+         * Exclusive or function.
+         * @public
+         * @param {...Boolean} values Boolean values for the "xor" function.
+         * @return {Boolean} The result of the "xor" function.
+         */
+        xor(...values) {
+          const sum = values.reduce((a, b) => a + b, 0);
+          return (sum % 2) === 1;
+        }
+      };
+</script>

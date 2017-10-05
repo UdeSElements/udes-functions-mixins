@@ -1,0 +1,122 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="udes-logical-operators-mixin.html">
+
+<script>
+  /**
+   * @namespace UdeS
+   */
+  window.UdeS = window.UdeS || {};
+
+  /**
+   * UdeS is functions mixin.
+   * @memberOf UdeS
+   * @mixinFunction
+   * @polymer
+   * @appliesMixin UdeS.LogicalOperatorsMixin
+   * @param {Class} superClass The super class.
+   * @return {Class} Class.
+   */
+  UdeS.IsFunctionsMixin = (superClass) =>
+      class extends UdeS.LogicalOperatorsMixin(superClass) {
+        /**
+         * Check if the all variables are undefined.
+         * @public
+         * @param {...Object} variables Variables.
+         * @return {Boolean} True if all variables are undefined, false
+         *                   otherwise.
+         */
+        isAllUndefined(...variables) {
+          const args = variables.map(this.isUndefinedVariable);
+          return this.and(...args);
+        }
+
+        /**
+         * Check if the variable is an array.
+         * @public
+         * @param {Object} variable Variable.
+         * @return {Boolean} True if the variable is an array.
+         */
+        isArray(variable) {
+          return Array.isArray(variable);
+        }
+
+        /**
+         * Check to see if an array is empty.
+         * @public
+         * @param {Array|Object} arr Array.
+         * @return {Boolean} True if the array is empty, false otherwise.
+         */
+        isEmptyArray(arr) {
+          if (this.isArray(arr)) {
+            return arr.length === 0;
+          }
+
+          return false;
+        }
+
+        /**
+         * Check to see if an object is empty (contains no enumerable
+         * properties).
+         * @public
+         * @param {Object} obj Object.
+         * @return {Boolean} Return true if the object contains no enumerable
+         *                   properties.
+         */
+        isEmptyObject(obj) {
+          return Object.getOwnPropertyNames(obj).length === 0;
+        }
+
+        /**
+         * Check to see if a string is empty.
+         * @public
+         * @param {Object|String} str String.
+         * @return {Boolean} True if the string is empty, false otherwise.
+         */
+        isEmptyString(str) {
+          return (!str || str.length === 0);
+        }
+
+        /**
+         * Check to see if a string is an integer.
+         * @public
+         * @param {String} str String.
+         * @return {Boolean} True if the string is an integer, false otherwise.
+         */
+        isInteger(str) {
+          return parseInt(str).toString() === str;
+        }
+
+        /**
+         * Check to see if a string is a positive integer.
+         * @public
+         * @param {String} str String.
+         * @return {Boolean} True if the string is a positive integer, false
+         *                   otherwise.
+         */
+        isPositiveInteger(str) {
+          return this.isInteger(str) && parseInt(str) > 0;
+        }
+
+        /**
+         * Check if at least one variable is undefined.
+         * @public
+         * @param {...Object} variables Variables.
+         * @return {Boolean} True if at least one variables is undefined, false
+         *                   otherwise.
+         */
+        isUndefined(...variables) {
+          const args = variables.map(this.isUndefinedVariable);
+          return this.or(...args);
+        }
+
+        /**
+         * Check if the variable is undefined.
+         * @public
+         * @param {Object} variable Variable.
+         * @return {Boolean} True if the variable is undefined, false otherwise.
+         */
+        isUndefinedVariable(variable) {
+          return typeof variable === 'undefined';
+        }
+      };
+</script>

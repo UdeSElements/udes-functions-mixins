@@ -1,0 +1,54 @@
+{
+    "name": "udes-functions-mixins",
+    "description": "Provides useful functions to help you create faster your Polymer applications and components.",
+    "keywords": [
+        "and",
+        "array",
+        "at",
+        "comparison",
+        "equal",
+        "equality",
+        "functions",
+        "greaterThan",
+        "greaterThanOrEqualTo",
+        "if",
+        "iif",
+        "is",
+        "isAllUndefined",
+        "isArray",
+        "isEmptyArray",
+        "isEmptyObject",
+        "isEmptyString",
+        "isUndefined",
+        "isUndefinedVariable",
+        "lessThan",
+        "lessThanOrEqualTo",
+        "logical",
+        "mixins",
+        "not",
+        "notEqual",
+        "notStrictEqual",
+        "operators",
+        "or",
+        "polymer",
+        "strictEqual",
+        "udes",
+        "xor"
+    ],
+    "main": "udes-functions-mixins.html",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/UdeSElements/udes-functions-mixins.git"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/UdeSElements/udes-functions-mixins",
+    "dependencies": {
+        "polymer": "Polymer/polymer#^2.0.0"
+    },
+    "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^3.0.0",
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+        "web-component-tester": "^6.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+    }
+}

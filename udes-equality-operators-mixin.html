@@ -1,0 +1,59 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<script>
+  /**
+   * @namespace UdeS
+   */
+  window.UdeS = window.UdeS || {};
+
+  /**
+   * UdeS equality operators mixin.
+   * @memberOf UdeS
+   * @mixinFunction
+   * @polymer
+   * @param {Class} superClass The super class.
+   * @return {Class} Class.
+   */
+  UdeS.EqualityOperatorsMixin = (superClass) =>
+      class extends superClass {
+        /**
+         * Perform a comparison (a == b) on all arguments.
+         * @public
+         * @param {...(String|Number)} args Arguments to compare.
+         * @return {Boolean} The result of the comparaison.
+         */
+        equal(...args) {
+          return args.reduce((a, b) => a == b);
+        }
+
+        /**
+         * Perform a strict comparison (a === b) on all arguments.
+         * @public
+         * @param {...(String|Number)} args Arguments to compare.
+         * @return {Boolean} The result of the comparaison.
+         */
+        strictEqual(...args) {
+          return args.reduce((a, b) => a === b);
+        }
+
+        /**
+         * Perform a comparison (a != b) on all arguments.
+         * @public
+         * @param {...(String|Number)} args Arguments to compare.
+         * @return {Boolean} The result of the comparaison.
+         */
+        notEqual(...args) {
+          return !this.equal(...args);
+        }
+
+        /**
+         * Perform a strict comparison (a !== b) on all arguments.
+         * @public
+         * @param {...(String|Number)} args Arguments to compare.
+         * @return {Boolean} The result of the comparaison.
+         */
+        notStrictEqual(...args) {
+          return !this.strictEqual(...args);
+        }
+      };
+</script>

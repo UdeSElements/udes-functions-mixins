@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>udes-relational-operators-mixin test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="udes-functions-mixins-test-element.html">
+</head>
+<body>
+<test-fixture id="basic">
+  <template>
+    <udes-functions-mixins-test-element></udes-functions-mixins-test-element>
+  </template>
+</test-fixture>
+<script>
+  suite('<udes-relational-operators-mixin>', () => {
+    let elementMixin;
+
+  setup(() => {
+      elementMixin = fixture('basic');
+  });
+
+  suite('greaterThan', () => {
+      test('should return false for 3 > 5', () => {
+        assert.isFalse(elementMixin.greaterThan(3, 5));
+      });
+
+      test('should return true for 5 > 3', () => {
+        assert.isTrue(elementMixin.greaterThan(5, 3));
+      });
+
+      test('should return false for 5 > 5', () => {
+        assert.isFalse(elementMixin.greaterThan(5, 5));
+      });
+  });
+
+  suite('greaterThanOrEqualTo', () => {
+      test('should return false for 3 >= 5', () => {
+        assert.isFalse(elementMixin.greaterThanOrEqualTo(3, 5));
+      });
+
+      test('should return true for 5 >= 3', () => {
+        assert.isTrue(elementMixin.greaterThanOrEqualTo(5, 3));
+      });
+
+      test('should return true for 5 >= 5', () => {
+        assert.isTrue(elementMixin.greaterThanOrEqualTo(5, 5));
+      });
+  });
+
+  suite('lessThan', () => {
+      test('should return true for 3 < 5', () => {
+        assert.isTrue(elementMixin.lessThan(3, 5));
+      });
+
+      test('should return false for 5 < 3', () => {
+        assert.isFalse(elementMixin.lessThan(5, 3));
+      });
+
+      test('should return false for 5 < 5', () => {
+        assert.isFalse(elementMixin.lessThan(5, 5));
+      });
+  });
+
+  suite('lessThanOrEqualTo', () => {
+      test('should return true for 3 <= 5', () => {
+        assert.isTrue(elementMixin.lessThanOrEqualTo(3, 5));
+      });
+
+      test('should return false for 5 <= 3', () => {
+        assert.isFalse(elementMixin.lessThanOrEqualTo(5, 3));
+      });
+
+      test('should return true for 5 <= 5', () => {
+        assert.isTrue(elementMixin.lessThanOrEqualTo(5, 5));
+      });
+  });
+});
+</script>
+</body>
+</html>

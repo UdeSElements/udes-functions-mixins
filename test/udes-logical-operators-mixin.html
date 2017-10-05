@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>udes-logical-operators-behavior test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <script src="logical-operators.js"></script>
+  <link rel="import" href="udes-functions-mixins-test-element.html">
+</head>
+<body>
+<test-fixture id="basic">
+  <template>
+    <udes-functions-mixins-test-element></udes-functions-mixins-test-element>
+  </template>
+</test-fixture>
+<script>
+  suite('<udes-logical-operators-behavior>', () => {
+    let elementMixin;
+
+    setup(() => {
+      elementMixin = fixture('basic');
+    });
+
+    const functions = logicalOperators['and-or-xor'];
+
+    // Foreach functions (and, or, xor and not)
+    functions.functionsName.forEach((functionName) => {
+      // Create a suite
+      suite(functionName, () => {
+        // Foreach test
+        for (const testName in functions.tests) {
+          if (functions.tests.hasOwnProperty(testName)) {
+            const expectedResult =
+                functions.tests[testName]['results'][functionName];
+            test('should return ' + expectedResult.toString() + ' for ' +
+                testName, () => {
+              const testObject = functions.tests[testName];
+              const params = testObject['test'];
+              const actualResult = elementMixin[functionName].apply(
+                  null, params);
+              assert.strictEqual(actualResult, expectedResult);
+            });
+          }
+        }
+      });
+    });
+
+    suite('not', () => {
+      test('should return true', () => {
+        const actualResult = elementMixin.not(false);
+        assert.isTrue(actualResult);
+      });
+
+      test('should return false', () => {
+        const actualResult = elementMixin.not(true);
+        assert.isFalse(actualResult);
+      });
+    });
+
+    suite('iif', () => {
+      test('should return A', () => {
+        const actualResult = elementMixin.iif(true, 'A', 'B');
+        assert.strictEqual(actualResult, 'A');
+      });
+
+      test('should return B', () => {
+        const actualResult = elementMixin.iif(false, 'A', 'B');
+        assert.strictEqual(actualResult, 'B');
+      });
+    });
+  });
+</script>
+</body>
+</html>

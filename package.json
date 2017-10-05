@@ -1,0 +1,59 @@
+{
+  "name": "udes-functions-mixins",
+  "version": "3.0.0",
+  "description": "Provides useful functions to help you create faster your Polymer applications and components.",
+  "author": "Université de Sherbrooke",
+  "license": "MIT",
+  "keywords": [
+    "and",
+    "array",
+    "at",
+    "comparison",
+    "equal",
+    "equality",
+    "functions",
+    "greaterThan",
+    "greaterThanOrEqualTo",
+    "if",
+    "iif",
+    "is",
+    "isAllUndefined",
+    "isArray",
+    "isEmptyArray",
+    "isEmptyObject",
+    "isEmptyString",
+    "isUndefined",
+    "isUndefinedVariable",
+    "lessThan",
+    "lessThanOrEqualTo",
+    "logical",
+    "mixins",
+    "not",
+    "notEqual",
+    "notStrictEqual",
+    "operators",
+    "or",
+    "polymer",
+    "strictEqual",
+    "udes",
+    "xor"
+  ],
+  "devDependencies": {
+    "eslint-config-udes": "0.1.2",
+    "pre-commit": "^1.1.3"
+  },
+  "scripts": {
+    "format": "npm run format:js && npm run format:json",
+    "format:js": "eslint . --ext js,html --ignore-path .gitignore --fix",
+    "format:json": "eslint . --ext .json --ignore-path .gitignore --fix",
+    "lint": "npm run lint:js && npm run lint:json && npm run lint:polymer",
+    "lint:js": "eslint . --ext js,html --ignore-path .gitignore",
+    "lint:json": "eslint . --ext .json --ignore-path .gitignore",
+    "lint:polymer": "polymer lint",
+    "test": "polymer test"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
+}
